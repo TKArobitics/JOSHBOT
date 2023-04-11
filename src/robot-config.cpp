@@ -15,7 +15,7 @@ motor backLeftMotor(PORT11);
 motor backRightMotor(PORT20);
 motor rollerMotor(PORT8);
 motor rollerMotor2(PORT9);
-motor extension(PORT12);
+motor extension(PORT13);
 motor extension2(PORT14);
 
 
