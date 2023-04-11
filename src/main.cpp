@@ -261,7 +261,7 @@ void matchAutonomous(){
 
 void usercontrol(void) {
   // User control code here, inside the loop
-  matchstart();
+  // matchstart();
   while (1) {
     // This is the main execution loop for the user control program.
     // Each time through the loop your program should update motor + servo
