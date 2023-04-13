@@ -58,7 +58,8 @@ void setMotors(int prct){
 }
 
 void turnRoller(int dist){
-  rollerMotor.spinFor(reverse, dist, degrees);
+  rollerMotor.spinFor(reverse, dist, degrees, false);
+  rollerMotor2.spinFor(forward, dist, degrees);
 }
 
 void allForward(int dist){
@@ -103,34 +104,53 @@ void tankTurn(int dist){
   backLeftMotor.spinFor(forward, dist, degrees);
 }
 
-void skills (){
-  setMotors(25);
-  allForwardWhile(30);
-  turnRoller(100); 
-  setMotors(100);
-  allForward(-500);
-  tankTurn(625);
-  allForward(600);
-  setMotors(25);
-  allForwardWhile(30);
-  turnRoller(100);
-  setMotors(100);
-  allForward(125);
-  tankTurn(937);
-  allForward(2500);
-  tankTurn(312);
-  setMotors(25);
-  allForwardWhile(30);
-  turnRoller(100); 
-  setMotors(100);
-  allForward(-500);
-  tankTurn(625);
-  allForward(600);
-  setMotors(25);
-  allForwardWhile(30);
-  turnRoller(100);
-  expand();
+void rightSideOnly(int dist){
+  frontRightMotor.spinFor(reverse, dist, degrees, false);
+  backRightMotor.spinFor(reverse, dist, degrees);
 }
+
+void skills (){
+  // setMotors(25);
+  // allForwardWhile(30);
+  // turnRoller(100); 
+  // setMotors(100);
+  // allForward(-500);
+  // tankTurn(625);
+  // allForward(600);
+  // setMotors(25);
+  // allForwardWhile(30);
+  // turnRoller(100);
+  // setMotors(100);
+  // allForward(125);
+  // tankTurn(937);
+  // allForward(2500);
+  // tankTurn(312);
+  // setMotors(25);
+  // allForwardWhile(30);
+  // turnRoller(100); 
+  // setMotors(100);
+  // allForward(-500);
+  // tankTurn(625);
+  // allForward(600);
+  // setMotors(25);
+  // allForwardWhile(30);
+  // turnRoller(100);
+  // expand();
+  
+  //(for 4/13/23)
+  setMotors(5);
+  allForwardWhile(-360);
+  turnRoller(200);
+  setMotors(50);
+  allForward(2400);
+  allForward(-1600);
+  tankTurn(300);
+  expand();
+
+  
+
+}
+
 
 void autonomous(void) {
   skills();
@@ -181,32 +201,25 @@ void tankDrive (){
 void oneStick (){
   int axis3 = controller1.Axis3.position();
   int axis2 = controller1.Axis4.position();
-  if (controller1.ButtonA.pressing()){
-    frontLeftMotor.stop();
-    frontRightMotor.stop();
-    backLeftMotor.stop();
-    backRightMotor.stop();
-  }
-  else {
-    frontLeftMotor.spin(vex::forward, axis3 + axis2, vex::percent);
-    frontRightMotor.spin(vex::reverse, axis3 - axis2, vex::percent);
-    backLeftMotor.spin(vex::forward, axis3 + axis2, vex::percent);
-    backRightMotor.spin(vex::reverse, axis3 - axis2, vex::percent);
-  }
+  frontLeftMotor.spin(vex::forward, axis3 + axis2, vex::percent);
+  frontRightMotor.spin(vex::reverse, axis3 - axis2, vex::percent);
+  backLeftMotor.spin(vex::forward, axis3 + axis2, vex::percent);
+  backRightMotor.spin(vex::reverse, axis3 - axis2, vex::percent);
 }
+
 
 void drivecontrol (){
   if (tankyDwive == 1){
     tankDrive();
   }
-  if (tankyDwive == 0){
+ else{
     oneStick();
   }
 }
 
 void spinnyThingControl (int i){
  rollerMotor.spin(vex::reverse, 50 * i, velocityUnits::pct);
- rollerMotor2.spin(vex::reverse, 50 * i, velocityUnits::pct);
+ rollerMotor2.spin(vex::forward, 50 * i, velocityUnits::pct);
 }
 
 void spinnyThing(){
@@ -218,6 +231,7 @@ void spinnyThing(){
   }
   else{
     rollerMotor.stop();
+    rollerMotor2.stop();
   }
 }
 
