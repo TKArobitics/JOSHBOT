@@ -1,41 +1,29 @@
 #include "vex.h"
 
 using namespace vex;
-using signature = vision::signature;
-using code = vision::code;
 
-// A global instance of brain used for printing to the V5 Brain screen
-brain  Brain;
+// A global instance of brain used for printing to the V5 brain screen
+brain Brain;
 
-// VEXcode device constructors
-controller controller1; 
+controller controller1;
 
-//these are the wheel motors (mechanum drive)
-motor backRightDrive(PORT20); 
-motor frontRightDrive(PORT18); 
-motor frontLeftDrive(PORT1); 
-motor backLeftDrive(PORT9); 
+//I apologize for spinny thing but here they only have one spinny thing that is not a wheel 
 
-motor rollerMotor(PORT3); //roller motor?
-
-motor conveyorMotor(PORT10); //conveyor motor (also intake)
-
-motor launcherR(PORT16); //launcher right motor
-motor launcherL(PORT15); //launcher left motor
-
-motor expandMotor(PORT13); //expansion
-
-gps GPSSensor = gps(PORT12, 0, 0, mm, 0);
-
-// VEXcode generated functions
-
+motor frontRightMotor(PORT6);
+motor frontLeftMotor(PORT1);
+motor backLeftMotor(PORT11);
+motor backRightMotor(PORT20);
+motor rollerMotor(PORT8);
+motor rollerMotor2(PORT7);
+motor extension(PORT13);
+motor extension2(PORT14);
 
 
 /**
  * Used to initialize code/tasks/devices added using tools in VEXcode Pro.
- * 
+ *
  * This should be called at the start of your int main function.
  */
-void vexcodeInit( void ) {
-  // nothing to initialize
+void vexcodeInit(void) {
+  // Nothing to initialize
 }
