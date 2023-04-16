@@ -151,10 +151,40 @@ void skills (){
 
 }
 
+void rampUpSpeed(int startingSpeed, int targetSpeed){
+  int currentSpeed = startingSpeed;
+  while (startingSpeed < targetSpeed)
+  {
+    currentSpeed +=5;
+    setMotors(currentSpeed);
+    wait(.2, sec);
+  }
+}
+
+void rampDownSpeed(int startingSpeed, int targetSpeed){
+  int currentSpeed = startingSpeed;
+  while (startingSpeed > targetSpeed)
+  {
+    currentSpeed -=5;
+    setMotors(currentSpeed);
+    wait(.2, sec);
+  }
+}
+
+void testAuto(){ // purely for testing robot functionality (NOT FINAL CODE)
+  rampUpSpeed(0,10);
+  allForwardWhile(200);
+  turnRoller(180);
+  rampUpSpeed(10,50);
+  allForward(-200);
+  tankTurn(180);
+  expand();
+}
+
 
 void autonomous(void) {
-  skills();
-
+  //skills();
+  testAuto();
 
 
   //  //this should move the robot forward
