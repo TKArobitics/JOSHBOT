@@ -116,7 +116,7 @@ void safeSkills(){
   expand();
 }
 
-void headToHead(){
+void blueLong(){
   setMotors(5);
   allForwardWhile(-360);
   turnRoller(200);
@@ -127,6 +127,15 @@ void headToHead(){
   allForward(2200);
   allForward(-2200);
 }
+
+// void blueShort(){
+//   rightSideOnly();
+//   setMotors();
+//   allForwardWhile();
+//   turnRoller();
+//   rightSideOnly();
+//   allForward();
+// }
 
 void skills (){
   // setMotors(25);
@@ -209,7 +218,7 @@ void autonomous(void) {
   // skills();
   // testAuto();
   // safeSkills();
-  headToHead();
+  // headToHead();
 
 
   //  //this should move the robot forward
