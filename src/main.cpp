@@ -198,6 +198,16 @@ void skills (){
 
 }
 
+void turnRoller(){
+  allForward(-300);
+  rightSideOnly(-1300);
+  setMotors(5);
+  allForwardWhile(-100);
+  turnRoller(75);
+
+}
+
+
 void rampUpSpeed(int startingSpeed, int targetSpeed){
   int currentSpeed = startingSpeed;
   while (startingSpeed < targetSpeed)
@@ -259,7 +269,8 @@ void autonomous(void) {
   // // headToHead();
 
   // guaranteedLongRoller();
-  guaranteedShortRoller();
+  // guaranteedShortRoller();
+  turnRoller();
 
   //  //this should move the robot forward
   // frontLeftMotor.spin(forward);
