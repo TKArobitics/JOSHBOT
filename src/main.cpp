@@ -205,17 +205,20 @@ void testAuto(){ // purely for testing robot functionality (NOT FINAL CODE)
   expand();
 }
 
-void guaranteedShortRoller(){
+void guaranteedLongRoller(){
   allForwardWhile(100);
   turnRoller(600);
   allForward(-100);
 }
-void guaranteedLongRoller(){
+void guaranteedShortRoller(){
   allForward(100);
   tankTurn(200);
   allForwardWhile(100);
   turnRoller(600);
   allForward(-100);
+  tankTurn(-200);
+  setMotors(100);
+  allForward(8000);
 }
 
 
@@ -223,7 +226,7 @@ void autonomous(void) {
   // skills();
   // testAuto();
   // safeSkills();
-  headToHead();
+  // headToHead();
 
   // guaranteedLongRoller();
   guaranteedShortRoller();
