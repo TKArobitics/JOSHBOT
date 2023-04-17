@@ -7,17 +7,9 @@ brain Brain;
 
 controller controller1;
 
-//I apologize for spinny thing but here they only have one spinny thing that is not a wheel 
-
-motor frontRightMotor(PORT6);
-motor frontLeftMotor(PORT1);
-motor backLeftMotor(PORT11);
-motor backRightMotor(PORT20);
-motor rollerMotor(PORT8);
-motor rollerMotor2(PORT7);
-motor extension(PORT13);
-motor extension2(PORT14);
-
+motor leftMotor(PORT12);
+motor rightMotor(PORT20);
+motor rollerMotor(PORT3);
 
 /**
  * Used to initialize code/tasks/devices added using tools in VEXcode Pro.
