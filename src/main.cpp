@@ -109,6 +109,7 @@ void rightSideOnly(int dist){
   backRightMotor.spinFor(reverse, dist, degrees);
 }
 
+// what does this do?
 void skills (){
   // setMotors(25);
   // allForwardWhile(30);
@@ -181,11 +182,26 @@ void testAuto(){ // purely for testing robot functionality (NOT FINAL CODE)
   expand();
 }
 
+void guaranteedShortRoller(){
+  allForwardWhile(100);
+  turnRoller(600);
+  allForward(-100);
+}
+void guaranteedLongRoller(){
+  allForward(100);
+  tankTurn(200);
+  allForwardWhile(100);
+  turnRoller(600);
+  allForward(-100);
+}
+
 
 void autonomous(void) {
-  //skills();
-  testAuto();
+  // skills();
+  // testAuto();
 
+  // guaranteedLongRoller();
+  guaranteedShortRoller();
 
   //  //this should move the robot forward
   // frontLeftMotor.spin(forward);
