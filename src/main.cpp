@@ -109,6 +109,15 @@ void tankTurn(int dist){
   backLeftMotor.spinFor(forward, dist, degrees);
 }
 
+void arcTurnLeft(int dist){
+  backLeftMotor.spinFor(reverse, dist, degrees);
+  backRightMotor.setBrake(hold);
+}
+void arcTurnRight(int dist){
+  backRightMotor.spinFor(forward, dist, degrees);
+  backLeftMotor.setBrake(hold);
+}
+
 void rightSideOnly(int dist){
   frontRightMotor.spinFor(reverse, dist, degrees, false);
   backRightMotor.spinFor(reverse, dist, degrees);
@@ -232,6 +241,17 @@ void guaranteedShortRoller(){
   // allForward(-1000);
 }
 
+void testShortRoller(){
+  arcTurnRight(1380);
+
+  allForward(100);
+  tankTurn(100);
+  allForward(-120);
+
+  turnRoller(150);
+  allForward(100);
+}
+
 
 
 void autonomous(void) {
@@ -241,7 +261,8 @@ void autonomous(void) {
   // headToHead();
 
   // guaranteedLongRoller();
-  guaranteedShortRoller();
+  // guaranteedShortRoller();
+  testShortRoller();
 
   //  //this should move the robot forward
   // frontLeftMotor.spin(forward);
