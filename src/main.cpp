@@ -62,6 +62,11 @@ void turnRoller(int dist){
   rollerMotor2.spinFor(forward, dist, degrees);
 }
 
+void turnRollerWhile(int dist){
+  rollerMotor.spinFor(reverse, dist, degrees, false);
+  rollerMotor2.spinFor(forward, dist, degrees, false);
+}
+
 void allForward(int dist){
   frontLeftMotor.spinFor(forward, dist, degrees, false);
   frontRightMotor.spinFor(reverse, dist, degrees, false);
@@ -210,16 +215,23 @@ void guaranteedLongRoller(){
   turnRoller(600);
   allForward(-100);
 }
+
 void guaranteedShortRoller(){
-  allForward(100);
-  tankTurn(200);
-  allForwardWhile(100);
-  turnRoller(600);
-  allForward(-100);
-  tankTurn(-200);
-  setMotors(100);
-  allForward(8000);
+  allForward(-800);
+  tankTurn(240);
+  
+  setMotors(10);
+  allForwardWhile(50);
+  turnRollerWhile(900);
+  allForward(50);
+
+  // setMotors(30);
+  // allForward(-200);
+  // tankTurn(340);
+  // setMotors(100);
+  // allForward(-1000);
 }
+
 
 
 void autonomous(void) {
@@ -311,8 +323,6 @@ void spinnyThing(){
 
 void launcher (){
   if (controller1.ButtonRight.pressing()){
-    extension2.spin(forward, 100, pct);
-    wait(2, sec);
     extension.spin(forward, 100 ,pct);
   }
 }
