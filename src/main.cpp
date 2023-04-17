@@ -128,25 +128,6 @@ void headToHead(){
   allForward(-2200);
 }
 
-void safeSkills(){
-  setMotors(5);
-  allForwardWhile(360);
-  turnRoller(200);
-  expand();
-}
-
-void headToHead(){
-  setMotors(5);
-  allForwardWhile(-360);
-  turnRoller(200);
-  allForward(100);
-  setMotors(50);
-  tankTurn(-300);
-  setMotors(75);
-  allForward(2200);
-  allForward(-2200);
-}
-
 // what does this do?
 void skills (){
   // setMotors(25);
