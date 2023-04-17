@@ -109,6 +109,44 @@ void rightSideOnly(int dist){
   backRightMotor.spinFor(reverse, dist, degrees);
 }
 
+void safeSkills(){
+  setMotors(5);
+  allForwardWhile(360);
+  turnRoller(200);
+  expand();
+}
+
+void headToHead(){
+  setMotors(5);
+  allForwardWhile(-360);
+  turnRoller(200);
+  allForward(100);
+  setMotors(50);
+  tankTurn(-300);
+  setMotors(75);
+  allForward(2200);
+  allForward(-2200);
+}
+
+void safeSkills(){
+  setMotors(5);
+  allForwardWhile(360);
+  turnRoller(200);
+  expand();
+}
+
+void headToHead(){
+  setMotors(5);
+  allForwardWhile(-360);
+  turnRoller(200);
+  allForward(100);
+  setMotors(50);
+  tankTurn(-300);
+  setMotors(75);
+  allForward(2200);
+  allForward(-2200);
+}
+
 // what does this do?
 void skills (){
   // setMotors(25);
@@ -146,9 +184,13 @@ void skills (){
   allForward(2400);
   allForward(-1600);
   tankTurn(300);
-  expand();
-
-  
+  setMotors(10);
+  allForwardWhile(150);
+  turnRoller(200);
+  setMotors(50);
+  tankTurn(-150);
+  allForward(2500);
+  rightSideOnly(-500);
 
 }
 
@@ -199,6 +241,8 @@ void guaranteedLongRoller(){
 void autonomous(void) {
   // skills();
   // testAuto();
+  // safeSkills();
+  headToHead();
 
   // guaranteedLongRoller();
   guaranteedShortRoller();
