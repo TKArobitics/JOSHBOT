@@ -50,6 +50,10 @@ void expand(){
   extension.spin(reverse);
 }
 
+void loading(){
+  extension.spin(forward);
+}
+
 void setMotors(int prct){
   frontLeftMotor.setVelocity(prct, pct);
   backLeftMotor.setVelocity(prct, pct);
@@ -290,11 +294,9 @@ void autonomous(void) {
 
   // guaranteedLongRoller();
   // guaranteedShortRoller();
-<<<<<<< HEAD
   turnRoller();
-=======
+  // guaranteedShortRoller();
   testShortRoller();
->>>>>>> 373e29e61eaa8c9ee560a45d7985b07c161bb049
 
   //  //this should move the robot forward
   // frontLeftMotor.spin(forward);
@@ -398,6 +400,9 @@ void matchstart(){
 void extensionControl(){
   if (controller1.ButtonL1.pressing()){
     expand();
+  }
+  else if (controller1.ButtonLeft.pressing()){
+    loading();
   }
   else if (controller1.ButtonL2.pressing()) {
     extension.stop();
