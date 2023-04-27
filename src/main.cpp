@@ -211,6 +211,7 @@ void skills (){
 
 }
 
+
 void turnRoller(){
   allForward(-300);
   rightSideOnly(-1300);
@@ -258,19 +259,24 @@ void guaranteedLongRoller(){
 }
 
 void guaranteedShortRoller(){
-  allForward(-800);
-  tankTurn(240);
+  // allForward(-800);
+  // tankTurn(240);
   
-  setMotors(10);
-  allForwardWhile(50);
-  turnRollerWhile(900);
-  allForward(50);
+  // setMotors(10);
+  // allForwardWhile(50);
+  // turnRollerWhile(900);
+  // allForward(50);
 
   // setMotors(30);
   // allForward(-200);
   // tankTurn(340);
   // setMotors(100);
   // allForward(-1000);
+
+  // new idea
+  turnRoller();
+  rightSideOnly(-100);
+  expand();
 }
 
 void testShortRoller(){
@@ -289,14 +295,15 @@ void testShortRoller(){
 void autonomous(void) {
   // skills();
   // testAuto();
-  // safeSkills();
   // // headToHead();
 
+
+  // safeSkills();
   // guaranteedLongRoller();
   // guaranteedShortRoller();
-  turnRoller();
+  // turnRoller();
   // guaranteedShortRoller();
-  testShortRoller();
+  // testShortRoller();
 
   //  //this should move the robot forward
   // frontLeftMotor.spin(forward);
@@ -412,6 +419,7 @@ void extensionControl(){
 void matchAutonomous(){
   if (controller1.ButtonLeft.pressing()){
     matchstart();
+
   }
 }
 
