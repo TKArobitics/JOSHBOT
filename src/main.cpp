@@ -46,32 +46,36 @@ void pre_auton(void) {
 /*  You must modify the code to add your own robot specific commands here.   */
 /*---------------------------------------------------------------------------*/
 
-void autoRollerBlue ()
+
+void autoRollerBlue ()//autonomous that uses color sensor to change the roller to the correct position
 {
   colorSensor.takeSnapshot(colorSensor__BLUESIDE);
   if (colorSensor.objectCount > 0)
   {
     rollerMotor.spin(forward, 35, pct);
-  }
+    rollerMotor2.spin(forward, 35, pct);  }
   else
   {
     rollerMotor.stop();
+    rollerMotor2.stop();
   }  
 }
-void autoRollerRed ()
+void autoRollerRed ()//autonomous that uses color sensor to change the roller to the correct position
 {
   colorSensor.takeSnapshot(colorSensor__REDSIDE);
   if (colorSensor.objectCount > 0)
   {
     rollerMotor.spin(forward, 35, pct);
+    rollerMotor2.spin(forward, 35, pct);
   }
   else
   {
     rollerMotor.stop();
+    rollerMotor2.stop();
   }  
 }
 
-void expand(){
+void expand(){//spins the expand motor to remove the axel
   extension.spin(reverse);
 }
 
@@ -355,8 +359,8 @@ void autonomous(void) {
 
 
   // safeSkills();
-  guaranteedLongRoller(); //slot 1
-  // guaranteedShortRoller(); // slot 2
+  // guaranteedLongRoller(); //slot 1
+  guaranteedShortRoller(); // slot 2
   // guaranteedLongRollerRed(); //slot 3
   // guaranteedShortRollerRed(); //slot 4
   // guaranteedLongRollerBlue(); //slot 5
@@ -430,6 +434,35 @@ void spinnyThingControl (int i){
  rollerMotor2.spin(vex::forward, 50 * i, velocityUnits::pct);
 }
 
+void driverControlAutoRollerBlue ()
+{
+  colorSensor.takeSnapshot(colorSensor__REDSIDE);
+  if (colorSensor.objectCount > 0)
+  {
+    rollerMotor.spin(forward, 35, pct);
+    rollerMotor2.spin(forward, 35, pct);
+  }
+  else
+  {
+    rollerMotor.stop();
+    rollerMotor2.stop();
+  }  
+}
+void driverControlAutoRollerRed ()
+{
+  colorSensor.takeSnapshot(colorSensor__BLUESIDE);
+  if (colorSensor.objectCount > 0)
+  {
+    rollerMotor.spin(forward, 35, pct);
+    rollerMotor2.spin(forward, 35, pct);
+  }
+  else
+  {
+    rollerMotor.stop();
+    rollerMotor2.stop();
+  }  
+}
+
 void spinnyThing(){
   if(controller1.ButtonA.pressing()){
     spinnyThingControl(1);
@@ -438,8 +471,16 @@ void spinnyThing(){
     spinnyThingControl(-1);
   }
   else{
+    if(controller1.ButtonRight.pressing()){
+      // comment out whichever autoRoller function you dont want to use in the match
+      
+      // driverControlAutoRollerRed();
+      driverControlAutoRollerBlue();
+    }
+    else{
     rollerMotor.stop();
     rollerMotor2.stop();
+    }  
   }
 }
 
@@ -465,10 +506,12 @@ void matchstart(){
 }
 
 void extensionControl(){
-  if (controller1.ButtonL1.pressing()){
+  if (controller1.ButtonL1.pressing() && controller1.ButtonLeft.pressing()){
     expand();
+    controller1.Screen.clearScreen();
+    controller1.Screen.print("WARNING! EXPANDING");
   }
-  else if (controller1.ButtonLeft.pressing()){
+  else if (controller1.ButtonDown.pressing()){
     loading();
   }
   else if (controller1.ButtonL2.pressing()) {
@@ -486,6 +529,7 @@ void matchAutonomous(){
 void usercontrol(void) {
   // User control code here, inside the loop
   // matchstart();
+  Brain.resetTimer();
   while (1) {
     // This is the main execution loop for the user control program.
     // Each time through the loop your program should update motor + servo
