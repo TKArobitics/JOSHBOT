@@ -131,7 +131,7 @@ void safeSkills(){
   setMotors(5);
   allForwardWhile(360);
   turnRoller(200);
-  expand();
+  // expand();
 }
 
 void blueLong(){
@@ -262,10 +262,10 @@ void guaranteedShortRoller(){
   // allForward(-800);
   // tankTurn(240);
   
-  // setMotors(10);
-  // allForwardWhile(50);
-  // turnRollerWhile(900);
-  // allForward(50);
+  setMotors(10);
+  allForwardWhile(50);
+  turnRollerWhile(900);
+  allForward(50);
 
   // setMotors(30);
   // allForward(-200);
@@ -273,10 +273,7 @@ void guaranteedShortRoller(){
   // setMotors(100);
   // allForward(-1000);
 
-  // new idea
-  turnRoller();
-  rightSideOnly(-100);
-  expand();
+
 }
 
 void testShortRoller(){
@@ -298,7 +295,7 @@ void autonomous(void) {
   // // headToHead();
 
 
-  // safeSkills();
+  safeSkills();
   // guaranteedLongRoller();
   // guaranteedShortRoller();
   // turnRoller();
