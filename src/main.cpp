@@ -46,6 +46,31 @@ void pre_auton(void) {
 /*  You must modify the code to add your own robot specific commands here.   */
 /*---------------------------------------------------------------------------*/
 
+void autoRollerBlue ()
+{
+  colorSensor.takeSnapshot(colorSensor__REDSIDE);
+  if (colorSensor.objectCount > 0)
+  {
+    rollerMotor.spin(forward, 35, pct);
+  }
+  else
+  {
+    rollerMotor.stop();
+  }  
+}
+void autoRollerRed ()
+{
+  colorSensor.takeSnapshot(colorSensor__BLUESIDE);
+  if (colorSensor.objectCount > 0)
+  {
+    rollerMotor.spin(forward, 35, pct);
+  }
+  else
+  {
+    rollerMotor.stop();
+  }  
+}
+
 void expand(){
   extension.spin(reverse);
 }
@@ -262,16 +287,22 @@ void guaranteedShortRoller(){
   // allForward(-800);
   // tankTurn(240);
   
-  setMotors(10);
-  allForwardWhile(50);
-  turnRollerWhile(900);
-  allForward(50);
+  // setMotors(10);
+  // allForwardWhile(50);
+  // turnRollerWhile(900);
+  // allForward(50);
 
   // setMotors(30);
   // allForward(-200);
   // tankTurn(340);
   // setMotors(100);
   // allForward(-1000);
+
+  allForward(-300);
+  rightSideOnly(-1300);
+  setMotors(5);
+  allForwardWhile(-100);
+  turnRoller(75);
 
 
 }
@@ -295,11 +326,10 @@ void autonomous(void) {
   // // headToHead();
 
 
-  safeSkills();
-  // guaranteedLongRoller();
-  // guaranteedShortRoller();
+  // safeSkills();
+  guaranteedLongRoller();
+  guaranteedShortRoller();
   // turnRoller();
-  // guaranteedShortRoller();
   // testShortRoller();
 
   //  //this should move the robot forward
