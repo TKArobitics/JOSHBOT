@@ -278,9 +278,9 @@ void testAuto(){ // purely for testing robot functionality (NOT FINAL CODE)
 }
 
 void guaranteedLongRoller(){
-  allForwardWhile(100);
+  allForwardWhile(-100);
   turnRoller(600);
-  allForward(-100);
+  allForward(100);
 }
 
 void guaranteedLongRollerRed(){
@@ -321,7 +321,7 @@ void guaranteedShortRoller(){
 
 void guaranteedShortRollerRed(){
   allForward(-300);
-  rightSideOnly(-1300);
+  rightSideOnly(-1100);
   setMotors(5);
   allForwardWhile(-100);
   autoRollerRed();
@@ -355,12 +355,12 @@ void autonomous(void) {
 
 
   // safeSkills();
-  guaranteedLongRoller();
-  guaranteedShortRoller();
-  guaranteedLongRollerRed();
-  guaranteedShortRollerRed();
-  guaranteedLongRollerBlue();
-  guaranteedShortRollerBlue();
+  guaranteedLongRoller(); //slot 1
+  // guaranteedShortRoller(); // slot 2
+  // guaranteedLongRollerRed(); //slot 3
+  // guaranteedShortRollerRed(); //slot 4
+  // guaranteedLongRollerBlue(); //slot 5
+  // guaranteedShortRollerBlue(); //slot 6
 
   // turnRoller();
   // testShortRoller();
