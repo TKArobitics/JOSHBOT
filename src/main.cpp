@@ -48,7 +48,7 @@ void pre_auton(void) {
 
 void autoRollerBlue ()
 {
-  colorSensor.takeSnapshot(colorSensor__REDSIDE);
+  colorSensor.takeSnapshot(colorSensor__BLUESIDE);
   if (colorSensor.objectCount > 0)
   {
     rollerMotor.spin(forward, 35, pct);
@@ -60,7 +60,7 @@ void autoRollerBlue ()
 }
 void autoRollerRed ()
 {
-  colorSensor.takeSnapshot(colorSensor__BLUESIDE);
+  colorSensor.takeSnapshot(colorSensor__REDSIDE);
   if (colorSensor.objectCount > 0)
   {
     rollerMotor.spin(forward, 35, pct);
@@ -283,6 +283,18 @@ void guaranteedLongRoller(){
   allForward(-100);
 }
 
+void guaranteedLongRollerRed(){
+  allForwardWhile(100);
+  autoRollerRed();
+  allForward(-100);
+}
+
+void guaranteedLongRollerBlue(){
+  allForwardWhile(100);
+  autoRollerBlue();
+  allForward(-100);
+}
+
 void guaranteedShortRoller(){
   // allForward(-800);
   // tankTurn(240);
@@ -307,6 +319,22 @@ void guaranteedShortRoller(){
 
 }
 
+void guaranteedShortRollerRed(){
+  allForward(-300);
+  rightSideOnly(-1300);
+  setMotors(5);
+  allForwardWhile(-100);
+  autoRollerRed();
+}
+
+void guaranteedShortRollerBlue(){
+  allForward(-300);
+  rightSideOnly(-1300);
+  setMotors(5);
+  allForwardWhile(-100);
+  autoRollerBlue();
+}
+
 void testShortRoller(){
   arcTurnRight(1380);
 
@@ -329,6 +357,11 @@ void autonomous(void) {
   // safeSkills();
   guaranteedLongRoller();
   guaranteedShortRoller();
+  guaranteedLongRollerRed();
+  guaranteedShortRollerRed();
+  guaranteedLongRollerBlue();
+  guaranteedShortRollerBlue();
+
   // turnRoller();
   // testShortRoller();
 
