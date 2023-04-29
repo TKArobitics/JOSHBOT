@@ -315,7 +315,8 @@ void guaranteedShortRoller(){
   // allForward(-1000);
 
   allForward(-300);
-  rightSideOnly(-1300);
+  rightSideOnly(-1200);
+  tankTurn(100);
   setMotors(5);
   allForwardWhile(-100);
   turnRoller(75);
@@ -353,7 +354,7 @@ void testShortRoller(){
 
 
 void autonomous(void) {
-  // skills();
+  skills();
   // testAuto();
   // // headToHead();
 
