@@ -317,11 +317,19 @@ void guaranteedShortRoller(){
   allForward(-300);
   rightSideOnly(-1200);
   tankTurn(100);
+  allForward(-200);
   setMotors(5);
   allForwardWhile(-100);
   turnRoller(75);
 
 
+}
+
+void guranteedSkills(){
+  guaranteedLongRoller();
+  allForward(500);
+  tankTurn(150);
+  expand();
 }
 
 void guaranteedShortRollerRed(){
@@ -354,14 +362,14 @@ void testShortRoller(){
 
 
 void autonomous(void) {
-  skills();
+  // skills();
   // testAuto();
   // // headToHead();
-
+  // guranteedSkills(); //slot 7
 
   // safeSkills();
-  // guaranteedLongRoller(); //slot 1
-  guaranteedShortRoller(); // slot 2
+  guaranteedLongRoller(); //slot 1
+  // guaranteedShortRoller(); // slot 2
   // guaranteedLongRollerRed(); //slot 3
   // guaranteedShortRollerRed(); //slot 4
   // guaranteedLongRollerBlue(); //slot 5
